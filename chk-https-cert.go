@@ -12,12 +12,13 @@ func getHourDiffer(startTime, endTime string) int64 {
 	a, _ := time.Parse("2006-01-02 15:04:05", startTime)
 	b, _ := time.Parse("2006-01-02 15:04:05", endTime)
 	d := b.Sub(a)
-	logrus.Infof("距离域名过期还有 -> %d天",int64(d.Hours()/24))
+	logrus.Infof("距离域名过期还有 -> %d天 ｜%d小时 ｜%d分钟", int64(d.Hours()/24), int64(d.Hours()), int64(d.Minutes()))
 	return int64(d.Hours() / 24)
 }
 
+// 检测https域名的证书有效期
 func main() {
-	domainName  := "https://www.baidu.com"
+	domainName := "https://www.baidu.com"
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
@@ -37,6 +38,6 @@ func main() {
 
 	nowTime := time.Now().Format("2006-01-02 15:04:05")
 	endTime := certInfo.NotAfter.Format("2006-01-02 15:04:05")
-	getHourDiffer(nowTime,endTime)
+	getHourDiffer(nowTime, endTime)
 
 }
