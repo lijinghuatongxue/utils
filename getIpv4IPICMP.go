@@ -4,7 +4,6 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/tatsushid/go-fastping"
 	"net"
-	"os"
 	"time"
 )
 
@@ -13,7 +12,7 @@ func GetIpv4IpICMP(Ipv4Addr string) {
 	ra, err := net.ResolveIPAddr("ip4:icmp", Ipv4Addr)
 	if err != nil {
 		logrus.Error(err)
-		os.Exit(1)
+		return
 	}
 	p.AddIPAddr(ra)
 	p.OnRecv = func(addr *net.IPAddr, rtt time.Duration) {
