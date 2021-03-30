@@ -12,7 +12,6 @@ func GetIpv4IpICMP(Ipv4Addr string) {
 	ra, err := net.ResolveIPAddr("ip4:icmp", Ipv4Addr)
 	if err != nil {
 		logrus.Error(err)
-		return
 	}
 	p.AddIPAddr(ra)
 	p.OnRecv = func(addr *net.IPAddr, rtt time.Duration) {
