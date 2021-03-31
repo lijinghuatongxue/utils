@@ -44,7 +44,7 @@ func main() {
 	port = 53
 	if checkIp(ip) {
 		if CheckPort(net.ParseIP(ip), port) != nil {
-			logrus.Error("tcp Scan Port Err!")
+			return
 		}
 	}
 }
