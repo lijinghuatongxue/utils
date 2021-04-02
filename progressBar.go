@@ -6,11 +6,6 @@ import (
 	"time"
 )
 
-type ProgressBarStruct struct {
-	FuncName string
-	LoopNum  int64
-}
-
 func ProgressBar(FuncName string, Count int64) {
 	count := Count
 	// create and start new bar
