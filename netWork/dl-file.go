@@ -1,4 +1,4 @@
-package main
+package NetWork
 
 import (
 	"github.com/sirupsen/logrus"

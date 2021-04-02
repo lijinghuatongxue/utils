@@ -32,7 +32,7 @@
 //	}
 //	logrus.Infof("写入 %d 个字节n", n)
 //}
-package main
+package LinuxCMD
 
 import (
 	"bufio"

@@ -1,4 +1,4 @@
-package main
+package LinuxCMD
 
 import (
 	"github.com/sirupsen/logrus"
