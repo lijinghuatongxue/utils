@@ -25,8 +25,8 @@ func GetIpv4IpICMP(Ipv4Addr string) {
 
 // 获取IP或者域名的ping延迟，仅限于Ipv4
 // Get IP or domain name Ping delay，IPv4 only
-func main() {
-	DomainName := "google.com"
-	//DomainName := "8.8.8.8"
-	GetIpv4IpICMP(DomainName)
-}
+//func main() {
+//	DomainName := "google.com"
+//	//DomainName := "8.8.8.8"
+//	GetIpv4IpICMP(DomainName)
+//}

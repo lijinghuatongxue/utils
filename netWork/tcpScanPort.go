@@ -37,14 +37,14 @@ func checkIp(ip string) bool {
 
 // 扫描IP端口是否是passed
 // Port scan passed
-func main() {
-	//ip := os.Args[1]
-	ip := "8.8.8.8"
-	var port int
-	port = 53
-	if checkIp(ip) {
-		if CheckPort(net.ParseIP(ip), port) != nil {
-			return
-		}
-	}
-}
+//func main() {
+//	//ip := os.Args[1]
+//	ip := "8.8.8.8"
+//	var port int
+//	port = 53
+//	if checkIp(ip) {
+//		if CheckPort(net.ParseIP(ip), port) != nil {
+//			return
+//		}
+//	}
+//}

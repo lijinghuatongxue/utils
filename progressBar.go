@@ -44,6 +44,6 @@ func ProgressBarTask() {
 //You need to specify the progress bar prefix, the number of times processed, such as how many files are processed, how many requests are made, and so on.
 //总等待时间 = 次数 * 你程序消耗时间
 //Total waiting time = times * your program consumes time
-func main() {
-	ProgressBar("test", 10)
-}
+//func main() {
+//	ProgressBar("test", 10)
+//}

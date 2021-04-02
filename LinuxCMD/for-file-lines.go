@@ -27,10 +27,11 @@ func ForFileLines(FileName string) error {
 	}
 	return nil
 }
-func main() {
-	var err error
-	err = ForFileLines("./tmp/test.txt")
-	if err != nil {
-		logrus.Error(err)
-	}
-}
+
+//func main() {
+//	var err error
+//	err = ForFileLines("./tmp/test.txt")
+//	if err != nil {
+//		logrus.Error(err)
+//	}
+//}

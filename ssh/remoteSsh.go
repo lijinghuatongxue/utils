@@ -76,15 +76,15 @@ func RemoteCmd(IP, Port, User, CMD string) (string, bool) {
 
 // 远程执行ssh指令
 // Remote execution of SSH instruction
-func main() {
-	cmd := "docker ps"
-	ip := "192.168.0.123"
-	port := "22"
-	user := "root"
-	RemoteCmdOutput, err := RemoteCmd(ip, port, user, cmd)
-	if err != true {
-		logrus.Error("[util - remote-ssh] | ❌ false| Err ===》%s", err)
-		return
-	}
-	logrus.Infof("cmd -> %s |Output -> \n%s", cmd, RemoteCmdOutput)
-}
+//func main() {
+//	cmd := "docker ps"
+//	ip := "192.168.0.123"
+//	port := "22"
+//	user := "root"
+//	RemoteCmdOutput, err := RemoteCmd(ip, port, user, cmd)
+//	if err != true {
+//		logrus.Error("[util - remote-ssh] | ❌ false| Err ===》%s", err)
+//		return
+//	}
+//	logrus.Infof("cmd -> %s |Output -> \n%s", cmd, RemoteCmdOutput)
+//}

@@ -8,24 +8,24 @@ import (
 )
 
 // 打包多个文件为1个文件
-func main() {
-	// ----------------- 打包 -------------
-	// 目标打包压缩后文件
-	dst := "./tmp/a.tar"
-	// 目标被打包文件1
-	file1 := "./go.mod"
-	// 目标被打包文件2
-	file2 := "./README.md"
-	if err := Tar([]string{file1, file2}, dst); err != nil {
-		logrus.Error(err)
-	}
-	// --------------- 解包 --------------
-	// srcFile：目标tar文件 ，dsrDir ：解压目录
-	if Decompression("./data/a.tar", "./data") != nil {
-		var err interface{}
-		logrus.Error(err)
-	}
-}
+//func main() {
+//	// ----------------- 打包 -------------
+//	// 目标打包压缩后文件
+//	dst := "./tmp/a.tar"
+//	// 目标被打包文件1
+//	file1 := "./go.mod"
+//	// 目标被打包文件2
+//	file2 := "./README.md"
+//	if err := Tar([]string{file1, file2}, dst); err != nil {
+//		logrus.Error(err)
+//	}
+//	// --------------- 解包 --------------
+//	// srcFile：目标tar文件 ，dsrDir ：解压目录
+//	if Decompression("./data/a.tar", "./data") != nil {
+//		var err interface{}
+//		logrus.Error(err)
+//	}
+//}
 
 func Tar(src []string, dst string) error {
 	// 创建tar文件

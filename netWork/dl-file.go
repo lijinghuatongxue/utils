@@ -42,12 +42,13 @@ func DlFile(SavePath, Url string, TimeOutNum time.Duration) bool {
 	}
 	return true
 }
-func main() {
-	// 文件保存路径
-	SavePath := "./tmp/222.html"
-	// 下载地址
-	Url := "https://www.blog.lijinghua.club"
-	// 超时秒数
-	TimeoutNum := 2
-	DlFile(SavePath, Url, time.Duration(TimeoutNum))
-}
+
+//func main() {
+//	// 文件保存路径
+//	SavePath := "./tmp/222.html"
+//	// 下载地址
+//	Url := "https://www.blog.lijinghua.club"
+//	// 超时秒数
+//	TimeoutNum := 2
+//	DlFile(SavePath, Url, time.Duration(TimeoutNum))
+//}

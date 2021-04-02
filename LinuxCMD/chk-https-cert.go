@@ -17,8 +17,8 @@ func getHourDiffer(startTime, endTime string) int64 {
 }
 
 // 检测https域名的证书有效期
-func main() {
-	domainName := "https://www.baidu.com"
+func ChkHTTPSCert(domainName string) {
+	domainName = domainName
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
@@ -39,5 +39,4 @@ func main() {
 	nowTime := time.Now().Format("2006-01-02 15:04:05")
 	endTime := certInfo.NotAfter.Format("2006-01-02 15:04:05")
 	getHourDiffer(nowTime, endTime)
-
 }

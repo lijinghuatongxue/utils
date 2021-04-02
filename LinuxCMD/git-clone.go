@@ -63,25 +63,26 @@ func Clone(GitTmpDir, GitDir, AppName, Url string) error {
 	}
 	return nil
 }
-func main() {
-	//gitUrl := "https://github.com/git-fixtures/basic.git"
-	gitUrl := "https://github.com/lijinghuatongxue/server-go.LinuxCMD"
-	// LinuxCMD 仓库存储目录
-	gitData := "./data"
-	// LinuxCMD 仓库临时存储目录
-	gitTmpData := "./tmp"
-	// 项目名字
-	AppName := "AppName"
-	gitUser := "lijinghuatongxue"
-	gitPasswd := "xxx"
-	// 无认证clone
-	err = Clone(gitTmpData, gitData, AppName, gitUrl)
-	if err != nil {
-		logrus.Error("Git Clone Err")
-	}
-	// 有认证clone
-	err = AuthClone(gitTmpData, gitData, AppName, gitUrl, gitUser, gitPasswd)
-	if err != nil {
-		logrus.Error("Git AuthClone Err")
-	}
-}
+
+//func main() {
+//	//gitUrl := "https://github.com/git-fixtures/basic.git"
+//	gitUrl := "https://github.com/lijinghuatongxue/server-go.LinuxCMD"
+//	// LinuxCMD 仓库存储目录
+//	gitData := "./data"
+//	// LinuxCMD 仓库临时存储目录
+//	gitTmpData := "./tmp"
+//	// 项目名字
+//	AppName := "AppName"
+//	gitUser := "lijinghuatongxue"
+//	gitPasswd := "xxx"
+//	// 无认证clone
+//	err = Clone(gitTmpData, gitData, AppName, gitUrl)
+//	if err != nil {
+//		logrus.Error("Git Clone Err")
+//	}
+//	// 有认证clone
+//	err = AuthClone(gitTmpData, gitData, AppName, gitUrl, gitUser, gitPasswd)
+//	if err != nil {
+//		logrus.Error("Git AuthClone Err")
+//	}
+//}

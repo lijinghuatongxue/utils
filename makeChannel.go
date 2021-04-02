@@ -24,6 +24,6 @@ func MakeChannel(numSum int) {
 }
 
 // make channel to execute u's func
-func main() {
-	MakeChannel(100)
-}
+//func main() {
+//	MakeChannel(100)
+//}

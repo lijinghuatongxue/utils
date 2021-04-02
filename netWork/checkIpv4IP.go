@@ -16,9 +16,9 @@ func CheckIp(ip string) bool {
 
 // 检查是否是IP格式
 // Check Str it is in IP format
-func main() {
-	ip := "localhost"
-	if CheckIp(ip) == true {
-		logrus.Infof("IP -> %s | Is True.", ip)
-	}
-}
+//func main() {
+//	ip := "localhost"
+//	if CheckIp(ip) == true {
+//		logrus.Infof("IP -> %s | Is True.", ip)
+//	}
+//}

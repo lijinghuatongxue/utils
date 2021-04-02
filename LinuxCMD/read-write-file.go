@@ -88,10 +88,10 @@ func writeFile(FileName, contentString string, IsCover bool) bool {
 }
 
 // 文件读写，可追加，可覆盖
-func main() {
-	// 文件内容
-	var contentString = "测试1\n测试2\n测试1\n测试2\n测试1\n测试2\n"
-	// 文件位置
-	var filename = "./data/test.txt"
-	writeFile(filename, contentString, false)
-}
+//func main() {
+//	// 文件内容
+//	var contentString = "测试1\n测试2\n测试1\n测试2\n测试1\n测试2\n"
+//	// 文件位置
+//	var filename = "./data/test.txt"
+//	writeFile(filename, contentString, false)
+//}
