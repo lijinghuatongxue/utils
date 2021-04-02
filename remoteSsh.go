@@ -1,4 +1,4 @@
-package ssh
+package meUtils
 
 import (
 	"github.com/sirupsen/logrus"

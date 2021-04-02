@@ -1,4 +1,4 @@
-package NetWork
+package meUtils
 
 import (
 	"context"

@@ -1,4 +1,4 @@
-package NetWork
+package meUtils
 
 import (
 	"github.com/sirupsen/logrus"

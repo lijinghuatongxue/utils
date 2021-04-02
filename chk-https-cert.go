@@ -1,4 +1,4 @@
-package LinuxCMD
+package meUtils
 
 import (
 	"crypto/tls"
