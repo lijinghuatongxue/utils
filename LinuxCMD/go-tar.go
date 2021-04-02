@@ -22,6 +22,7 @@ func main() {
 	// --------------- 解包 --------------
 	// srcFile：目标tar文件 ，dsrDir ：解压目录
 	if Decompression("./data/a.tar", "./data") != nil {
+		var err interface{}
 		logrus.Error(err)
 	}
 }

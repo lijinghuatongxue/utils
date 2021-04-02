@@ -23,7 +23,7 @@ func AuthClone(GitTmpDir, GitDir, AppName, Url, gitUser, GitPasswd string) error
 		logrus.Error("git目标目录删除失败")
 		return err
 	}
-	// Clones the repository into the given dir, just as a normal git clone does
+	// Clones the repository into the given dir, just as a normal LinuxCMD clone does
 	_, err = git.PlainClone(GitDirAppName, false, &git.CloneOptions{
 		URL: Url,
 		Auth: &http.BasicAuth{
@@ -65,10 +65,10 @@ func Clone(GitTmpDir, GitDir, AppName, Url string) error {
 }
 func main() {
 	//gitUrl := "https://github.com/git-fixtures/basic.git"
-	gitUrl := "https://github.com/lijinghuatongxue/server-go.git"
-	// git 仓库存储目录
+	gitUrl := "https://github.com/lijinghuatongxue/server-go.LinuxCMD"
+	// LinuxCMD 仓库存储目录
 	gitData := "./data"
-	// git 仓库临时存储目录
+	// LinuxCMD 仓库临时存储目录
 	gitTmpData := "./tmp"
 	// 项目名字
 	AppName := "AppName"
