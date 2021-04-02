@@ -1,4 +1,4 @@
-module github.com/lijinghuatongxue/adou_utils
+module github.com/lijinghuatongxue/meUtils
 
 go 1.16
 
