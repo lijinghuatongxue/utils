@@ -1,4 +1,4 @@
-module github.com/lijinghuatongxue/meUtils
+module github.com/lijinghuatongxue/utils
 
 go 1.16
 
