@@ -2,9 +2,8 @@ package main
 
 import (
 	"fmt"
-	"time"
-
 	"github.com/cheggaaa/pb/v3"
+	"time"
 )
 
 type ProgressBarStruct struct {
@@ -33,12 +32,12 @@ func ProgressBar(FuncName string, Count int64) {
 	//bar.Set("my_green_string", "描述1").Set("my_blue_string", "描述2")
 	for i := 0; i < int(count); i++ {
 		bar.Increment()
-		Task()
+		ProgressBarTask()
 	}
 	bar.Finish()
 }
 
-func Task() {
+func ProgressBarTask() {
 	time.Sleep(1 * time.Second)
 	// 尽量不要有输出，否则会换行
 	// Try not to have output, otherwise I will wrap.
