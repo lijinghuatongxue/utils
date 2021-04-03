@@ -5,10 +5,24 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
 func DlFile(SavePath, Url string, TimeOutNum time.Duration) bool {
+	// 判断是否多级目录
+	if strings.Contains(SavePath, "/") == true {
+		countSplit := strings.Split(SavePath, "/")
+		countSplitEnd := strings.SplitN(SavePath, "/", len(countSplit))
+		var a []string
+		a = countSplitEnd[:len(countSplitEnd)-1]
+		DirName := strings.Join(a, "/")
+		os.MkdirAll(DirName, os.ModePerm)
+
+	} else {
+		DirName := SavePath
+		os.MkdirAll(DirName, os.ModePerm)
+	}
 	newFile, err := os.Create(SavePath)
 	if err != nil {
 		logrus.Error(err)
