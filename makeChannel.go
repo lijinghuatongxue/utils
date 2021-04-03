@@ -1,22 +1,16 @@
 package meUtils
 
 import (
-	"github.com/sirupsen/logrus"
-	"runtime"
 	"sync"
 )
 
-func Task() {
-	logrus.Info(runtime.NumGoroutine())
-}
-
-func MakeChannel(numSum int) {
+func MakeChannel(numSum int, Func func()) {
 	wg := sync.WaitGroup{}
 	wg.Add(numSum)
 	for i := 0; i < numSum; i++ {
 		go func(i int) {
 			// u's Func is here
-			Task()
+			Func()
 			wg.Done()
 		}(i)
 	}
