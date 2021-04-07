@@ -16,12 +16,7 @@ func ReadFile2Str(FileName string, DetailedOutput bool) (StrOutput, error) {
 		}
 		return "null", err
 	}
-	err = f.Close()
-	if err != nil {
-		if DetailedOutput {
-			logrus.Error("close file fail", err)
-		}
-	}
+	defer f.Close()
 	fd, err := ioutil.ReadAll(f)
 	if err != nil {
 		if DetailedOutput {

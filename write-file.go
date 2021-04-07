@@ -32,10 +32,11 @@ func WriteFile(FileName, contentString string, IsCover, DetailedOutput bool) boo
 		var _ error
 		if checkFileIsExist(FileName) { //如果文件存在
 			f, _ = os.OpenFile(FileName, os.O_APPEND, 0666) //打开文件
-			logrus.Info("文件存在")
 		} else {
 			f, _ = os.Create(FileName) //创建文件
-			logrus.Info("文件不存在")
+			if DetailedOutput {
+				logrus.Infof("｜文件不存在 -> %s |已创建.", FileName)
+			}
 		}
 		file, err := os.OpenFile(FileName, os.O_WRONLY|os.O_APPEND, 0666)
 		if err != nil {
@@ -43,10 +44,7 @@ func WriteFile(FileName, contentString string, IsCover, DetailedOutput bool) boo
 			return false
 		}
 		//及时关闭file句柄
-		err = file.Close()
-		if err != nil {
-			logrus.Error(err)
-		}
+		defer file.Close()
 		//写入文件时，使用带缓存的 *Writer
 		write := bufio.NewWriter(file)
 		_, err = write.WriteString(contentString)
