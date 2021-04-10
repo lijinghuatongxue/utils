@@ -15,7 +15,7 @@
 - ✅ 随机生成随机字符串，包括字符和数字 / Randomly generate random strings, including characters and numbers
 - ✅ 制造多channel执行Func / Manufacturing multi channel executive func
 - ✅ 任务执行进度条 / Task execution progress bar
-
+- ✅ 模版文件生成 / Template file generation
 
 
 # Todo
