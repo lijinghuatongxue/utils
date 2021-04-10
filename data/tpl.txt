@@ -1,0 +1,10 @@
+[program:{{.ProjectName}}]
+directory = {{.ProjectName}}
+command = {{.CMD}}
+user=root
+numprocs=1
+stopsignal=KILL
+startretries=5
+autostart=true
+redirect_stderr=true
+stdout_logfile = /opt/supervisord/var/log/{{.ProjectName}}.log

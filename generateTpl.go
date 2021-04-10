@@ -47,7 +47,7 @@ func GenerateTpl(WFilePath, TplPath string, TplStruct interface{}, DetailedOutpu
 		return err, WFilePath
 	}
 	if DetailedOutput {
-		logrus.Infof("[util - 文件生成 | 标准输出 |%s \n]", WFilePath)
+		logrus.Infof("[util - 文件生成 | 标准输出 |%s ]\n", WFilePath)
 		// 模版渲染
 		if err := tmpl.Execute(os.Stdout, TplStruct); err != nil {
 			logrus.Errorf("[util - 远程配置文件输出到屏幕标准输出] ｜ ❌ false |err ===》%s |\n", err)
