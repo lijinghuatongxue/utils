@@ -7,7 +7,19 @@ import (
 	"text/template"
 )
 
-func GenerateTpl(WFilePath, TplPath string, TplStruct interface{}) (error, string) {
+// tpl demo
+//[program:{{.ProjectName}}]
+//directory = {{.ProjectName}}
+//command = {{.CMD}}
+//user=root
+//numprocs=1
+//stopsignal=KILL
+//startretries=5
+//autostart=true
+//redirect_stderr=true
+//stdout_logfile = /opt/supervisord/var/log/{{.ProjectName}}.log
+
+func GenerateTpl(WFilePath, TplPath string, TplStruct interface{}, DetailedOutput bool) (error, string) {
 	// 解析模版
 	tmpl, err := template.ParseFiles(TplPath)
 	if err != nil {
@@ -25,35 +37,36 @@ func GenerateTpl(WFilePath, TplPath string, TplStruct interface{}) (error, strin
 		logrus.Errorf("[util - 远程配置文件生成] ｜ ❌ false |err ===》%s ", err)
 		return err, WFilePath
 	}
-	logrus.Info("[util - 文件生成] ｜ ✅ true ")
+	if DetailedOutput {
+		logrus.Info("[util - 文件生成] ｜ ✅ true ")
+	}
 	// 模版渲染，并赋值给变量
 	var buf bytes.Buffer
 	if err := tmpl.Execute(&buf, TplStruct); err != nil {
 		logrus.Errorf("[util - 远程配置文件变量赋值] ｜ ❌ false ｜err ===》%s ", err)
 		return err, WFilePath
 	}
-	logrus.Info("[util - 远程配置文件输出到屏幕标准输出]")
-	// 模版渲染，并输出到屏幕标准输出
-	if err := tmpl.Execute(os.Stdout, TplStruct); err != nil {
-		logrus.Errorf("[util - 远程配置文件输出到屏幕标准输出] ｜ ❌ false |err ===》%s", err)
-		return err, WFilePath
+	if DetailedOutput {
+		logrus.Infof("[util - 文件生成 | 标准输出 |%s \n]", WFilePath)
+		// 模版渲染
+		if err := tmpl.Execute(os.Stdout, TplStruct); err != nil {
+			logrus.Errorf("[util - 远程配置文件输出到屏幕标准输出] ｜ ❌ false |err ===》%s |\n", err)
+			return err, WFilePath
+		}
+	} else {
+		// 模版渲染，并输出到屏幕标准输出
+		if err := tmpl.Execute(os.Stdin, TplStruct); err != nil {
+			logrus.Errorf("[util - 远程配置文件输出到屏幕标准输出] ｜ ❌ false |err ===》%s |\n", err)
+			return err, WFilePath
+		}
 	}
+
 	return nil, WFilePath
 }
 
 //func main()  {
-//  tpl demo
-//[program:{{.ProjectName}}]
-//directory = {{.ProjectName}}
-//command = {{.CMD}}
-//user=root
-//numprocs=1
-//stopsignal=KILL
-//startretries=5
-//autostart=true
-//redirect_stderr=true
-//stdout_logfile = /opt/supervisord/var/log/{{.ProjectName}}.log
-
+//
+//
 //	type DataStruct struct {
 //		ProjectName string
 //		CMD         string
@@ -65,5 +78,5 @@ func GenerateTpl(WFilePath, TplPath string, TplStruct interface{}) (error, strin
 //		Program:     "spring-gateway",
 //		CMD:         "CMD11",
 //	}
-//	GenerateTpl("./data/shuchu.txt","./data/tpl.txt",&foo)
+//	GenerateTpl("./data/shuchu.txt","./data/tpl.txt",&foo,false)
 //}
