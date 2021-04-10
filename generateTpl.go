@@ -42,6 +42,18 @@ func GenerateTpl(WFilePath, TplPath string, TplStruct interface{}) (error, strin
 }
 
 //func main()  {
+//  tpl demo
+//[program:{{.ProjectName}}]
+//directory = {{.ProjectName}}
+//command = {{.CMD}}
+//user=root
+//numprocs=1
+//stopsignal=KILL
+//startretries=5
+//autostart=true
+//redirect_stderr=true
+//stdout_logfile = /opt/supervisord/var/log/{{.ProjectName}}.log
+
 //	type DataStruct struct {
 //		ProjectName string
 //		CMD         string
