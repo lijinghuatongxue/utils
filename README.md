@@ -16,6 +16,7 @@
 - ✅ 制造多channel执行Func / Manufacturing multi channel executive func
 - ✅ 任务执行进度条 / Task execution progress bar
 - ✅ 模版文件生成 / Template file generation
+- ✅ 加解密，包括base64 / Encryption and decryption, including Base64
 
 
 # Todo
