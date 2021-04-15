@@ -2,45 +2,79 @@ package meUtils
 
 import (
 	"github.com/jlaffaye/ftp"
+	"github.com/sirupsen/logrus"
 	"io"
-	"log"
 	"os"
+	"strings"
 	"time"
 )
 
-func DlFtpFile(FtpPort, FtpServerAddr, SavePath, DlFilePath string) {
-	c, err := ftp.Dial(FtpServerAddr+":"+FtpPort, ftp.DialWithTimeout(10*time.Second))
+// download ftp file，support Ftp auth
+func DlFtpFile(FtpPort, FtpFileUrl, SavePath string, DetailedOutput bool) error {
+	//
+	var FtpDomain string
+	var FtpFilePath string
+	_, FtpDomain, FtpFilePath = CuttingFtpFileAddress(FtpFileUrl, true)
+
+	c, err := ftp.Dial(FtpDomain+":"+FtpPort, ftp.DialWithTimeout(10*time.Second))
 	if err != nil {
-		log.Fatal(err)
+		logrus.Error(err)
+		return err
 	}
 
-	err = c.Login("demo", "password")
+	err = c.Login("lijinghua", "123456")
 	if err != nil {
-		log.Fatal(err)
+		logrus.Error(err)
+		return err
 	}
 
 	//c.ChangeDir("./data")
 
-	res, err := c.Retr(DlFilePath)
+	res, err := c.Retr(FtpFilePath)
 	if err != nil {
-		log.Fatal(err)
+		logrus.Error(err)
+		return err
 	}
 
 	defer res.Close()
 
 	outFile, err := os.Create(SavePath)
 	if err != nil {
-		log.Fatal(err)
+		logrus.Error(err)
+		return err
 	}
 
 	defer outFile.Close()
 
 	_, err = io.Copy(outFile, res)
 	if err != nil {
-		log.Fatal(err)
+		logrus.Error(err)
+		return err
 	}
+	if DetailedOutput {
+		logrus.Infof("util |Ftp文件下载成功 ｜ Ftp地址 -> %s |保存地址 -> %s", FtpFileUrl, SavePath)
+	}
+	return nil
+}
+
+func CuttingFtpFileAddress(FtpFileUrl string, DetailedOutput bool) (string, string, string) {
+	// 截取到ftp
+	ftpCount := strings.SplitN(FtpFileUrl, ":", len(FtpFileUrl))
+	// 截取主域名
+	domainTotal := strings.SplitN(ftpCount[1], "/", len(ftpCount[1]))
+	// 获取文件路径
+	FtpFilePath := strings.SplitN(ftpCount[1], "/", 4)
+	if DetailedOutput {
+		logrus.Infof("util |CuttingFtpFileAddress |protocol -> %s |Domain -> %s |FtpFileUrlPath -> %s |", ftpCount[0], domainTotal[2], FtpFilePath[3])
+	}
+	return ftpCount[0], domainTotal[2], FtpFilePath[3]
 }
 
 //func main()  {
-//	DlFtpFile("21","test.rebex.net","./data/test-ftp.png","/pub/example/mail-editor.png")
+//	FtpPort := "21"
+//	var err error
+//	err = DlFtpFile(FtpPort, "ftp://ali/1KB.zip", "./data/0415.zip",true)
+//	if err != nil{
+//		logrus.Info("download FtpFile err")
+//	}
 //}
