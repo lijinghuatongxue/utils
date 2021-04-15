@@ -17,6 +17,8 @@
 - ✅ 任务执行进度条 / Task execution progress bar
 - ✅ 模版文件生成 / Template file generation
 - ✅ 加解密，包括base64 / Encryption and decryption, including Base64
+- ✅ FTP文件下载，支持密码认证下载/ FTP file download, support password authentication download
+- ✅ 模拟Wget下载文件 / Simulate WGet download file
 
 
 # Todo
