@@ -25,11 +25,8 @@ func DlFtpFile(FtpPort, FtpFileUrl, SavePath string, DetailedOutput bool) error 
 	err = c.Login("lijinghua", "123456")
 	if err != nil {
 		logrus.Error(err)
-		return err
 	}
-
 	//c.ChangeDir("./data")
-
 	res, err := c.Retr(FtpFilePath)
 	if err != nil {
 		logrus.Error(err)
@@ -75,6 +72,6 @@ func CuttingFtpFileAddress(FtpFileUrl string, DetailedOutput bool) (string, stri
 //	var err error
 //	err = DlFtpFile(FtpPort, "ftp://ali/1KB.zip", "./data/0415.zip",true)
 //	if err != nil{
-//		logrus.Info("download FtpFile err")
+//		logrus.Error("download FtpFile err")
 //	}
 //}
