@@ -2,7 +2,7 @@
 
 
 
-# Fea
+# Feature / 功能
 
 - ✅ 检查域名HTTPS证书有效期  / Check the validity of domain name certificate
 - ✅ 获取域名IP / Get domain IP
@@ -21,7 +21,7 @@
 - ✅ 模拟Wget下载文件 / Simulate WGet download file
 
 
-# Todo
+# Todo / 待做
 
 - 支持定时任务 / Support timed tasks
 - 
