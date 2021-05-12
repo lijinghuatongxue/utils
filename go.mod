@@ -3,6 +3,7 @@ module github.com/lijinghuatongxue/utils
 go 1.16
 
 require (
+	github.com/boombuler/barcode v1.0.1
 	github.com/cheggaaa/pb/v3 v3.0.7
 	github.com/go-git/go-git/v5 v5.3.0
 	github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067
