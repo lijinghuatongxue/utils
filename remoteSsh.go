@@ -8,13 +8,12 @@ import (
 	"time"
 )
 
-func RemoteCmd(IP, Port, User, CMD string) (string, bool) {
+func RemoteCmd(IP, Port, User, CMD, idRsaPath string) (string, bool) {
 	// ======================================= ssh ===========================
 	user := User
 	address := IP
 	command := CMD
 	port := Port
-	idRsaPath := "./data/id_rsa"
 	key, err := ioutil.ReadFile(idRsaPath)
 	if err != nil {
 		logrus.Error("[util - remote-ssh] | ❌ false|unable to read private key: %v", err)
