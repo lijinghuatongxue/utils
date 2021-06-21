@@ -1,4 +1,4 @@
-package meUtils
+package fileOperate
 
 import (
 	"github.com/sirupsen/logrus"
@@ -6,9 +6,7 @@ import (
 	"os"
 )
 
-type StrOutput string
-
-func ReadFile2Str(FileName string, DetailedOutput bool) (StrOutput, error) {
+func ReadFile2Str(FileName string, DetailedOutput bool) (string, error) {
 	f, err := os.Open(FileName)
 	if err != nil {
 		if DetailedOutput {
@@ -24,5 +22,5 @@ func ReadFile2Str(FileName string, DetailedOutput bool) (StrOutput, error) {
 		}
 		return "null", err
 	}
-	return StrOutput(fd), nil
+	return string(fd), nil
 }

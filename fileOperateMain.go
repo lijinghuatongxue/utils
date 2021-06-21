@@ -6,10 +6,19 @@ import (
 )
 
 func WriteFile(FileName, contentString string, IsCover, DetailedOutput bool) bool {
-	iok := fileOperate.WriteFile(FileName, contentString, IsCover, DetailedOutput)
-	if !iok {
-		logrus.Error("util file operate err!")
+	isOk := fileOperate.WriteFile(FileName, contentString, IsCover, DetailedOutput)
+	if !isOk {
+		logrus.Error("util | WriteFile operate err!")
 		return false
 	}
 	return true
+}
+
+func ReadFile2Str(FileName string, DetailedOutput bool) (string, error) {
+	StrOutput, isOk := fileOperate.ReadFile2Str(FileName, DetailedOutput)
+	if isOk != nil {
+		logrus.Error("util | ReadFile2Str operate err!")
+		return "", isOk
+	}
+	return StrOutput, isOk
 }
