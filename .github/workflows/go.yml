@@ -32,12 +32,16 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: '1.14'
-      - name: Run coverage
-        run: go test -race -coverprofile=coverage.txt -covermode=atomic
-      - name: Upload coverage to Codecov
-        run: bash <(curl -s https://codecov.io/bash)
-      - name: Upload Coverage report to CodeCov
-        uses: codecov/codecov-action@v1.0.0
+      - name: Upload coverage to Codecov (demo)
+        uses: ./
         with:
-          token: ${{secrets.CODECOV_TOKEN}}
-          file: ./coverage.txt
+          files: ./coverage/calculator/coverage-final.json,./coverage/coverage-test/coverage-final.json
+          file: ./coverage/coverage-final.json
+          flags: demo
+          name: codecov-demo
+      - name: Upload coverage to Codecov (script)
+        uses: ./
+        with:
+          files: ./coverage/script/coverage-final.json
+          flags: script
+          name: codecov-script
