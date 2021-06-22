@@ -28,8 +28,12 @@ func ListFileDir(dirPath, suffix string) (files []string, err error) {
 		logrus.Errorf("util | ListFileDir operate err! \n%s", err)
 	}
 	return ListRes, err
-	//for _, value := range ListRes{
-	//	//fmt.Println(index, "\t",value)
-	//	fmt.Println(value)
-	//}
+}
+
+func FindDirAllFile(dirPath, suffix string) (files []string, err error) {
+	ListRes, err := fileOperate.FindDirAllFile(dirPath, suffix)
+	if err != nil {
+		logrus.Errorf("util | FindDirAllFile operate err! \n%s", err)
+	}
+	return ListRes, err
 }
