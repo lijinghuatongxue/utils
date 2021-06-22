@@ -1,7 +1,7 @@
 [![License](https://img.shields.io/github/license/lijinghuatongxue/utils.svg)](https://github.com/lijinghuatongxue/utils/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/lijinghuatongxue/utils.svg?branch=main)](https://travis-ci.org/lijinghuatongxue/utils)
 [![GoDoc](http://godoc.org/github.com/lijinghuatongxue/utils?status.svg)](http://godoc.org/github.com/lijinghuatongxue/utils)
-[![Coverage Status](https://codecov.io/gh/gofrs/uuid/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/gh/gofrs/uuid/)
+[![Coverage Status](https://codecov.io/gh/lijinghuatongxue/utils/branch/main/graphs/badge.svg?branch=main)](https://codecov.io/gh/lijinghuatongxue/utils/)
 [![Go Report Card](https://goreportcard.com/badge/github.com/lijinghuatongxue/utils)](https://goreportcard.com/report/github.com/lijinghuatongxue/utils)
 
 # go-utils
