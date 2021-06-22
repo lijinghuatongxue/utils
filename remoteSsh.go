@@ -67,7 +67,7 @@ func RemoteCmd(IP, Port, User, CMD, idRsaPath string) (string, bool) {
 		log.Fatal("远程执行cmd 失败", err)
 	}
 	if err != nil {
-		logrus.Error("[util - remote-ssh] | ❌ false| Err ===》%s", err)
+		logrus.Errorf("[util - remote-ssh] | ❌ false| Err ===》%v", err)
 		return "null", false
 	}
 	return string(combo), true
