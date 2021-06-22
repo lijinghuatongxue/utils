@@ -97,7 +97,7 @@ func Decompression(srcFile, dsrDir string) error {
 			logrus.Error(err)
 			return err
 		}
-		logrus.Infof("Decompression File->", dsrDir+"/"+fi.Name())
+		logrus.Infof("Decompression File-> %s", dsrDir+"/"+fi.Name())
 		if _, err := io.Copy(fw, tr); err != nil {
 			logrus.Error(err)
 			return err
