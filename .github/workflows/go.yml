@@ -53,7 +53,9 @@ jobs:
       - name: Generate coverage report
         run: |
           go test `go list ./... | grep -v examples` -coverprofile=coverage.txt -covermode=atomic
-
+      - name: ls -lrat
+        run: |
+          ls -lrat
       - name: Upload coverage report
         uses: codecov/codecov-action@v1.0.2
         with:
