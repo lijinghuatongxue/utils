@@ -68,11 +68,11 @@ jobs:
           go test `go list ./... | grep -v examples` -coverprofile=coverage.txt -covermode=atomic
       - name: Run Unit tests.
         run: make test-coverage
-#      - name: Lint Go Code
-#        run: |
-#          export PATH=$PATH:$(go env GOPATH)/bin
-#          go get -u golang.org/x/lint/golint
-#          make lint
+      - name: Lint Go Code
+        run: |
+          export PATH=$PATH:$(go env GOPATH)/bin
+          go get -u golang.org/x/lint/golint
+          make lint
       - name: Upload Coverage report to CodeCov
         uses: codecov/codecov-action@v1.0.0
         with:
