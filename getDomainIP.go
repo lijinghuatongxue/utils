@@ -26,9 +26,3 @@ func GetDomainIP(DNSServer, Domain string) string {
 	}
 	return ""
 }
-
-// 获取域名的IP
-// Get IP address of domain name
-//func main() {
-//	GetDomainIP("8.8.8.8", "lijinghua.club")
-//}
