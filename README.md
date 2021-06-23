@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/github/license/lijinghuatongxue/utils.svg)](https://github.com/lijinghuatongxue/utils/blob/master/LICENSE)
-[![Build Status](https://github.com/lijinghuatongxue/utils/workflows/Go/badge.svg)](https://github.com/lijinghuatongxue/utils/workflows/Go/badge.svg)
+![Build Status](https://github.com/lijinghuatongxue/utils/workflows/Go/badge.svg)
 [![GoDoc](http://godoc.org/github.com/lijinghuatongxue/utils?status.svg)](http://godoc.org/github.com/lijinghuatongxue/utils)
 [![Coverage Status](https://codecov.io/gh/lijinghuatongxue/utils/branch/main/graphs/badge.svg?branch=main)](https://codecov.io/gh/lijinghuatongxue/utils/)
 [![Go Report Card](https://goreportcard.com/badge/github.com/lijinghuatongxue/utils)](https://goreportcard.com/report/github.com/lijinghuatongxue/utils)
