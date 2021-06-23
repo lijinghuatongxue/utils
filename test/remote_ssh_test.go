@@ -13,7 +13,7 @@ func TestRemoteSSH(t *testing.T) {
 	user := "root"
 	RemoteCmdOutput, err := utils.RemoteCmd(ip, port, user, cmd, "")
 	if err != true {
-		logrus.Errorf("[util - remote-ssh] | ❌ false| Err ===》%s", err)
+		logrus.Error("[util - remote-ssh] | ❌ false|")
 		return
 	}
 	logrus.Infof("cmd -> %s |Output -> \n%s", cmd, RemoteCmdOutput)
