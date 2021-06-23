@@ -38,7 +38,7 @@ jobs:
         with:
           go-version: '1.14'
       - name: Run coverage
-        run: go test -race -coverprofile=coverage.txt -covermode=atomic
+        run: go test  ./test/ -race -coverprofile=coverage.txt -covermode=atomic
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash)
   codecov:
@@ -62,17 +62,6 @@ jobs:
               curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
               dep ensure
           fi
-
-      - name: Generate coverage report
-        run: |
-          go test `go list ./... | grep -v examples` -coverprofile=coverage.txt -covermode=atomic
-      - name: Run Unit tests.
-        run: make test-coverage
-      - name: Lint Go Code
-        run: |
-          export PATH=$PATH:$(go env GOPATH)/bin
-          go get -u golang.org/x/lint/golint
-          make lint
       - name: Upload Coverage report to CodeCov
         uses: codecov/codecov-action@v1.0.0
         with:
