@@ -15,7 +15,6 @@ func DlFtpFile(FtpPort, FtpFileUrl, SavePath string, DetailedOutput bool) error 
 	var FtpDomain string
 	var FtpFilePath string
 	_, FtpDomain, FtpFilePath = CuttingFtpFileAddress(FtpFileUrl, true)
-
 	c, err := ftp.Dial(FtpDomain+":"+FtpPort, ftp.DialWithTimeout(10*time.Second))
 	if err != nil {
 		logrus.Error(err)
