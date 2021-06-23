@@ -44,5 +44,5 @@ func ProgressBar(FuncName string, Count int64, Func func()) {
 //总等待时间 = 次数 * 你程序消耗时间
 //Total waiting time = times * your program consumes time
 //func main() {
-//	ProgressBar("test", 10)
+//	ProgressBar("test", 10,ProgressBarTask)
 //}
