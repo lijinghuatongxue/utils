@@ -8,8 +8,6 @@ import (
 	"os"
 )
 
-var err error
-
 func AuthClone(GitTmpDir, GitDir, AppName, Url, gitUser, GitPasswd string) error {
 	// Tempdir to clone the repository
 	_, err := ioutil.TempDir(GitTmpDir, AppName)
