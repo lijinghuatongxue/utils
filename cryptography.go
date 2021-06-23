@@ -19,10 +19,3 @@ func Base64Decode(decodeStr []byte) string {
 	}
 	return string(enByte)
 }
-
-//func main()  {
-//	i := Base64Encode("233")
-//	logrus.Infof("enCode str is %s",i)
-//	j := Base64Decode([]byte("MjMz"))
-//	logrus.Infof("deCode str is %s",j)
-//}
