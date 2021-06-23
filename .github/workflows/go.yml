@@ -66,17 +66,29 @@ jobs:
       - name: Generate coverage report
         run: |
           go test `go list ./... | grep -v examples` -coverprofile=coverage.txt -covermode=atomic
+      - name: Run Unit tests.
+        run: make test-coverage
+      - name: Lint Go Code
+        run: |
+          export PATH=$PATH:$(go env GOPATH)/bin
+          go get -u golang.org/x/lint/golint
+          make lint
+      - name: Upload Coverage report to CodeCov
+        uses: codecov/codecov-action@v1.0.0
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
+          file: ./coverage.txt
       - name: ls -lrat
         run: |
           ls -lrat
           cat coverage.txt
-      - name: Upload coverage report
-        uses: codecov/codecov-action@v1.0.2
-        with:
-          token: ${{secrets.CODECOV_TOKEN}}
-          file: ./coverage.txt
-          flags: unittests
-          name: codecov-umbrella
+#      - name: Upload coverage report
+#        uses: codecov/codecov-action@v1.0.2
+#        with:
+#          token: ${{secrets.CODECOV_TOKEN}}
+#          file: ./coverage.txt
+#          flags: unittests
+#          name: codecov-umbrella
 #  test:
 #    name: Test
 #    runs-on: ubuntu-latest
