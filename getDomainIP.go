@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func GetDomainIP(DNSServer, Domain string) {
+func GetDomainIP(DNSServer, Domain string) string {
 	r := &net.Resolver{
 		PreferGo: true,
 		Dial: func(ctx context.Context, network, address string) (net.Conn, error) {
@@ -22,8 +22,9 @@ func GetDomainIP(DNSServer, Domain string) {
 		logrus.Errorf("Domain Resolver Err! -> %s |DNSServer -> %s |IP -> %s", Domain, DNSServer, ip)
 	} else {
 		logrus.Infof("Domain -> %s |DNSServer -> %s |IP -> %s", Domain, DNSServer, ip[0])
+		return ip[0]
 	}
-
+	return ""
 }
 
 // 获取域名的IP
