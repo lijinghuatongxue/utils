@@ -102,7 +102,10 @@ func Decompression(srcFile, dsrDir string) error {
 			logrus.Error(err)
 			return err
 		}
-		os.Chmod(fi.Name(), fi.Mode().Perm())
+		err = os.Chmod(fi.Name(), fi.Mode().Perm())
+		if err != nil {
+			logrus.Error(err)
+		}
 		fw.Close()
 	}
 	return nil
