@@ -11,17 +11,23 @@ import (
 
 func DlFile(SavePath, Url string, TimeOutNum time.Duration) bool {
 	// 判断是否多级目录
-	if strings.Contains(SavePath, "/") == true {
+	if strings.Contains(SavePath, "/") {
 		countSplit := strings.Split(SavePath, "/")
 		countSplitEnd := strings.SplitN(SavePath, "/", len(countSplit))
 		var a []string
 		a = countSplitEnd[:len(countSplitEnd)-1]
 		DirName := strings.Join(a, "/")
-		os.MkdirAll(DirName, os.ModePerm)
+		err := os.MkdirAll(DirName, os.ModePerm)
+		if err != nil {
+			logrus.Error(err)
+		}
 
 	} else {
 		DirName := SavePath
-		os.MkdirAll(DirName, os.ModePerm)
+		err := os.MkdirAll(DirName, os.ModePerm)
+		if err != nil {
+			logrus.Error(err)
+		}
 	}
 	newFile, err := os.Create(SavePath)
 	if err != nil {
