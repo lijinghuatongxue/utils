@@ -4,7 +4,7 @@
 [![Coverage Status](https://codecov.io/gh/lijinghuatongxue/utils/branch/main/graphs/badge.svg?branch=main)](https://codecov.io/gh/lijinghuatongxue/utils/)
 [![Go Report Card](https://goreportcard.com/badge/github.com/lijinghuatongxue/utils)](https://goreportcard.com/report/github.com/lijinghuatongxue/utils)
 [![Repo Size](https://img.shields.io/github/repo-size/lijinghuatongxue/utils?color=blue&label=repo%20size&logo=repo%20size&logoColor=green&style=flat-square)](https://img.shields.io/github/repo-size/lijinghuatongxue/utils?color=blue&label=repo%20size&logo=repo%20size&logoColor=green&style=flat-square)
-![Gitter](https://img.shields.io/gitter/room/lijinghuatongxue/community?color=green&label=Gitter&logoColor=blue)
+[![Gitter](https://img.shields.io/gitter/room/lijinghuatongxue/community?color=green&label=Gitter&logoColor=blue)](https://gitter.im/lijinghuatongxue/community)
 
 # go-utils
 
