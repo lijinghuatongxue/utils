@@ -43,8 +43,3 @@ func ChkHTTPSCert(domainName string, DetailedOutput bool) int64 {
 	endTime := certInfo.NotAfter.Format("2006-01-02 15:04:05")
 	return getHourDiffer(nowTime, endTime, DetailedOutput)
 }
-
-//func main()  {
-//	time := ChkHTTPSCert("https://lijinghua.club",false)
-//	logrus.Warn(time)
-//}
