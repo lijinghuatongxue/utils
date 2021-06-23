@@ -14,11 +14,3 @@ func DlFileUseWget(FileUrl, SavePath string) error {
 	}
 	return nil
 }
-
-//func main() {
-//	var err error
-//	err = DlFileUseWget("ftp://speedtest.tele2.net/../1KB.zip", "./data/curl.zip")
-//	if err != nil{
-//		logrus.Error("Wget file error!")
-//	}
-//}
