@@ -9,7 +9,7 @@ import (
 	"github.com/boombuler/barcode/qr"
 )
 
-func generateQrCode(URL, QrCodePath string, DetailedOutput bool) {
+func GenerateQrCode(URL, QrCodePath string, DetailedOutput bool) {
 
 	qrCode, _ := qr.Encode(URL, qr.M, qr.Auto)
 
