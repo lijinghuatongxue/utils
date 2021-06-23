@@ -1,4 +1,4 @@
-package meUtils
+package utils
 
 import (
 	"github.com/go-git/go-git/v5"

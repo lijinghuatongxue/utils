@@ -1,4 +1,4 @@
-package meUtils
+package utils
 
 import (
 	"sync"
