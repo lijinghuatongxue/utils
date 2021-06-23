@@ -65,12 +65,3 @@ func CuttingFtpFileAddress(FtpFileUrl string, DetailedOutput bool) (string, stri
 	}
 	return ftpCount[0], domainTotal[2], FtpFilePath[3]
 }
-
-//func main()  {
-//	FtpPort := "21"
-//	var err error
-//	err = DlFtpFile(FtpPort, "ftp://ali/1KB.zip", "./data/0415.zip",true)
-//	if err != nil{
-//		logrus.Error("download FtpFile err")
-//	}
-//}
