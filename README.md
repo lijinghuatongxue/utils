@@ -3,7 +3,7 @@
 [![GoDoc](http://godoc.org/github.com/lijinghuatongxue/utils?status.svg)](http://godoc.org/github.com/lijinghuatongxue/utils)
 [![Coverage Status](https://codecov.io/gh/lijinghuatongxue/utils/branch/main/graphs/badge.svg?branch=main)](https://codecov.io/gh/lijinghuatongxue/utils/)
 [![Go Report Card](https://goreportcard.com/badge/github.com/lijinghuatongxue/utils)](https://goreportcard.com/report/github.com/lijinghuatongxue/utils)
-
+[![Repo Size]](https://img.shields.io/github/repo-size/lijinghuatongxue/utils?style=flat-square)
 # go-utils
 
 
