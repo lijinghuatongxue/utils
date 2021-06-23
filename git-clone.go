@@ -36,10 +36,34 @@ func AuthClone(GitTmpDir, GitDir, AppName, Url, gitUser, GitPasswd string) error
 	}
 	return nil
 }
+func IsDir(path string) bool {
+	s, err := os.Stat(path)
+	if err != nil {
+		return false
+	}
+	return s.IsDir()
+}
 
 func Clone(GitTmpDir, GitDir, AppName, Url string) error {
 	// Tempdir to clone the repository
-	_, err := ioutil.TempDir(GitTmpDir, AppName)
+	var err error
+	isOk := IsDir(GitTmpDir)
+	if isOk != true {
+		var err error
+		err = os.MkdirAll(GitTmpDir, 0755)
+		if err != nil {
+			logrus.Error(err)
+		}
+	}
+	isOk = IsDir(GitDir)
+	if isOk != true {
+		var err error
+		err = os.MkdirAll(GitDir, 0755)
+		if err != nil {
+			logrus.Error(err)
+		}
+	}
+	_, err = ioutil.TempDir(GitTmpDir, AppName)
 	if err != nil {
 		logrus.Error(err)
 		return err
@@ -61,26 +85,3 @@ func Clone(GitTmpDir, GitDir, AppName, Url string) error {
 	}
 	return nil
 }
-
-//func main() {
-//	//gitUrl := "https://github.com/git-fixtures/basic.git"
-//	gitUrl := "https://github.com/lijinghuatongxue/server-go.LinuxCMD"
-//	// LinuxCMD 仓库存储目录
-//	gitData := "./data"
-//	// LinuxCMD 仓库临时存储目录
-//	gitTmpData := "./tmp"
-//	// 项目名字
-//	AppName := "AppName"
-//	gitUser := "lijinghuatongxue"
-//	gitPasswd := "xxx"
-//	// 无认证clone
-//	err = Clone(gitTmpData, gitData, AppName, gitUrl)
-//	if err != nil {
-//		logrus.Error("Git Clone Err")
-//	}
-//	// 有认证clone
-//	err = AuthClone(gitTmpData, gitData, AppName, gitUrl, gitUser, gitPasswd)
-//	if err != nil {
-//		logrus.Error("Git AuthClone Err")
-//	}
-//}
