@@ -6,7 +6,6 @@
 
 # go-utils
 
-[![codecov](https://codecov.io/gh/lijinghuatongxue/utils/branch/main/graph/badge.svg?token=2oH6tGCvHF)](https://codecov.io/gh/lijinghuatongxue/utils)
 
 # Feature / 功能
 
