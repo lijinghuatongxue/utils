@@ -17,3 +17,9 @@ func TestForFileLines(t *testing.T) {
 		logrus.Info(value)
 	}
 }
+func PrintTestForFileLines(str string) {
+	logrus.Warn(str)
+}
+func TestForFileLinesFunc(t *testing.T) {
+	utils.ForFileLinesExecFunc("./data/tpl.txt", PrintTestForFileLines)
+}
