@@ -52,21 +52,3 @@ func ForFileLinesExecFunc(FileName string, FuncName func(string2 string)) error 
 	}
 	return nil
 }
-
-//func PrintLog(Msg string)  {
-//	logrus.Info(Msg)
-//}
-
-//func main() {
-//	var err error
-//	var array []string
-//	array, err = ForFileLines("./README.md")
-//	if err != nil {
-//		logrus.Error(err)
-//	}
-//	for _, value := range array{
-//		//fmt.Println(index, "\t",value)
-//		logrus.Info(value)
-//	}
-//	ForFileLinesExecFunc("./data/tpl.txt",PrintLog)
-//}
