@@ -53,17 +53,6 @@ jobs:
           ls -lrat
       - name: Run Unit tests.
         run: make test-coverage
-      - name: Lint Go Code
-        run: |
-          export PATH=$PATH:$(go env GOPATH)/bin
-          go get -u golang.org/x/lint/golint
-          make lint
-      - name: Upload Coverage report to CodeCov
-        uses: codecov/codecov-action@v1.0.0
-        with:
-          token: ${{secrets.CODECOV_TOKEN}}
-          file: ./coverage.txt
-
 #      - name: Upload coverage report
 #        uses: codecov/codecov-action@v1.0.2
 #        with:
