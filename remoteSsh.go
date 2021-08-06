@@ -4,7 +4,6 @@ import (
 	"github.com/sirupsen/logrus"
 	"golang.org/x/crypto/ssh"
 	"io/ioutil"
-	"log"
 	"time"
 )
 
@@ -63,9 +62,6 @@ func RemoteCmd(IP, Port, User, CMD, idRsaPath string) (string, bool) {
 	//err = ss.Run(command)
 	//执行远程命令
 	combo, err := ss.CombinedOutput(command)
-	if err != nil {
-		log.Fatal("远程执行cmd 失败", err)
-	}
 	if err != nil {
 		logrus.Errorf("[util - remote-ssh] | ❌ false| Err ===》%v", err)
 		return "null", false
