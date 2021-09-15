@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func RemoteCmd(IP, Port, User, CMD, idRsaPath string) (string, bool) {
+func RemoteCmd(IP, Port, User, CMD, idRsaPath string) (string, error) {
 	// ======================================= ssh ===========================
 	user := User
 	address := IP
@@ -16,7 +16,7 @@ func RemoteCmd(IP, Port, User, CMD, idRsaPath string) (string, bool) {
 	key, err := ioutil.ReadFile(idRsaPath)
 	if err != nil {
 		logrus.Errorf("[util - remote-ssh] | ❌ false|unable to read private key: %v", err)
-		return "null", false
+		return "null", err
 	}
 	// Create the Signer for this private key.
 	signer, err := ssh.ParsePrivateKey(key)
@@ -27,7 +27,7 @@ func RemoteCmd(IP, Port, User, CMD, idRsaPath string) (string, bool) {
 	//hostKeyCallback, err := kh.New("./data/known_hosts")
 	if err != nil {
 		logrus.Errorf("[util - remote-ssh] | ❌ false|could not create hostkeycallback function: %v ", err)
-		return "null", false
+		return "null", err
 	}
 
 	config := &ssh.ClientConfig{
@@ -47,13 +47,13 @@ func RemoteCmd(IP, Port, User, CMD, idRsaPath string) (string, bool) {
 	client, err := ssh.Dial("tcp", address+":"+port, config)
 	if err != nil {
 		logrus.Errorf("[util - remote-ssh] | ❌ false|unable to connect: %v", err)
-		return "null", false
+		return "null", err
 	}
 	defer client.Close()
 	ss, err := client.NewSession()
 	if err != nil {
 		logrus.Errorf("[util - remote-ssh] | ❌ false|unable to create SSH session: %v", err)
-		return "null", false
+		return "null", err
 	}
 	defer ss.Close()
 	// Creating the buffer which will hold the remotly executed command's output.
@@ -64,7 +64,7 @@ func RemoteCmd(IP, Port, User, CMD, idRsaPath string) (string, bool) {
 	combo, err := ss.CombinedOutput(command)
 	if err != nil {
 		logrus.Errorf("[util - remote-ssh] | ❌ false| Err ===》%v", err)
-		return "null", false
+		return "null", err
 	}
-	return string(combo), true
+	return string(combo), nil
 }
