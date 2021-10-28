@@ -40,7 +40,7 @@ jobs:
       - name: ls -lrta
         run: ls -lrta && sudo  apt-get  -y update && sudo apt-get install libpcap-dev -y
       - name: Run coverage
-        run: go test -v  ./test/ -race -coverprofile=coverage.txt -covermode=atomic
+        run: .  ./test/ -race -coverprofile=coverage.txt -covermode=atomic
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash)
       - name: Upload Coverage report to CodeCov

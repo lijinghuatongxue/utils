@@ -37,3 +37,11 @@ func FindDirAllFile(dirPath, suffix string) (files []string, err error) {
 	}
 	return ListRes, err
 }
+
+func FindDirAllFileNoSuffix(dirPath string) (files []string, err error) {
+	ListRes, err := fileOperate.FindDirAllFileNoSuffix(dirPath)
+	if err != nil {
+		logrus.Errorf("util | FindDirAllFile operate err! \n%s", err)
+	}
+	return ListRes, err
+}

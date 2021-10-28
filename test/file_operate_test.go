@@ -12,6 +12,10 @@ func TestFileOperate(t *testing.T) {
 	for _, s := range str {
 		logrus.Info(s)
 	}
+	str, _ = utils.FindDirAllFileNoSuffix("./")
+	for _, s := range str {
+		logrus.Info(s)
+	}
 	utils.WfMain("./tmp.txt", "abc", true, true)
 	str1, _ = utils.ListFileDir("./", "")
 	for _, s := range str1 {

@@ -1,6 +1,5 @@
 .idea
 ./data
 ./logs
-./tmp
 /tmp/
 /data/AppName/
