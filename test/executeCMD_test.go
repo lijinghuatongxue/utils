@@ -7,7 +7,8 @@ import (
 )
 
 func TestExecuteCMD(t *testing.T) {
-	err, _, Stdout := utils.LocalCMD("echo 2222")
+	cmd := fmt.Sprintf("%s %s %s %s %s", "cd /tmp", "echo 111", "touch /tmp/12222", "echo 233 > /tmp/12222", "cat /tmp/12222")
+	err, _, Stdout := utils.LocalCMD(cmd)
 	if err != nil {
 		return
 	}
