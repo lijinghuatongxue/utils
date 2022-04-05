@@ -8,11 +8,11 @@ import (
 	"os/exec"
 )
 
-func LocalCMD(cmdStr string) (err error, ProcessState *os.ProcessState, OutInfo string) {
-	command := exec.Command(cmdStr)
+func LocalCMD(cmdStr string, Args []string) (err error, ProcessState *os.ProcessState, OutInfo string) {
+	command := exec.Command(cmdStr, Args...)
 	outInfo := bytes.Buffer{}
 	command.Stdout = &outInfo
-	err = command.Start()
+	err = command.Run()
 	if err != nil {
 		fmt.Println(err.Error())
 		return err, nil, ""
