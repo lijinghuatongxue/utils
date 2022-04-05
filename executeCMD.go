@@ -3,21 +3,22 @@ package utils
 import (
 	"bytes"
 	"fmt"
+	"github.com/sirupsen/logrus"
 	"os"
 	"os/exec"
 )
 
-func ExecuteCMD(dir string, commandName string, params []string) (string, error) {
-	cmd := exec.Command(commandName, params...)
-	fmt.Println("CmdAndChangeDir", dir, cmd.Args)
-	var out bytes.Buffer
-	cmd.Stdout = &out
-	cmd.Stderr = os.Stderr
-	cmd.Dir = dir
-	err := cmd.Start()
+func LocalCMD(cmdStr string) (err error, ProcessState *os.ProcessState, OutInfo string) {
+	command := exec.Command(cmdStr)
+	outInfo := bytes.Buffer{}
+	command.Stdout = &outInfo
+	err = command.Start()
 	if err != nil {
-		return "", err
+		fmt.Println(err.Error())
+		return err, nil, ""
 	}
-	err = cmd.Wait()
-	return out.String(), err
+	if err = command.Wait(); err != nil {
+		logrus.Error(err.Error())
+	}
+	return nil, command.ProcessState, outInfo.String()
 }

@@ -7,7 +7,7 @@ import (
 )
 
 func TestExecuteCMD(t *testing.T) {
-	Stdout, err := utils.ExecuteCMD("./", "ls", []string{"-l"})
+	err, _, Stdout := utils.LocalCMD("echo 2222")
 	if err != nil {
 		return
 	}
