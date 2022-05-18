@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func connect(user, password, PublicKeysPath, host string, port int) (*sftp.Client, error) {
+func connect(isPasswd bool, user, password, PublicKeysPath, host string, port int) (*sftp.Client, error) {
 	var (
 		auth         []ssh.AuthMethod
 		addr         string
@@ -33,7 +33,11 @@ func connect(user, password, PublicKeysPath, host string, port int) (*sftp.Clien
 		logrus.Error("parse key failed:%v", err)
 		return nil, err
 	}
-	auth = append(auth, ssh.Password(password), ssh.PublicKeys(signer))
+	if isPasswd {
+		auth = append(auth, ssh.Password(password))
+	} else {
+		auth = append(auth, ssh.PublicKeys(signer))
+	}
 
 	clientConfig = &ssh.ClientConfig{
 		User:            user,
@@ -65,7 +69,7 @@ func SftpUpload(isPasswd bool, username, passwd, sftpServer, PublicKeysPath, Loc
 		passwd = "xx"
 	}
 	// 这里换成实际的 SSH 连接的 用户名，密码，主机名或IP，SSH端口
-	sftpClient, err = connect(username, passwd, PublicKeysPath, sftpServer, sftpPort)
+	sftpClient, err = connect(isPasswd, username, passwd, PublicKeysPath, sftpServer, sftpPort)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -124,7 +128,7 @@ func SftpDownload(isPasswd bool, username, passwd, sftpServer, PublicKeysPath, L
 		passwd = "xx"
 	}
 	// 这里换成实际的 SSH 连接的 用户名，密码，主机名或IP，SSH端口
-	sftpClient, err = connect(username, passwd, PublicKeysPath, sftpServer, sftpPort)
+	sftpClient, err = connect(isPasswd, username, passwd, PublicKeysPath, sftpServer, sftpPort)
 	if err != nil {
 		logrus.Error(err)
 		return err
