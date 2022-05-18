@@ -115,7 +115,7 @@ func SftpUpload(isPasswd bool, username, passwd, sftpServer, PublicKeysPath, Loc
 	return nil
 }
 
-func SftpDownload(isPasswd bool, username, passwd, sftpServer, PublicKeysPath, LocalDirPath, RemoteFilePath string, sftpPort int) {
+func SftpDownload(isPasswd bool, username, passwd, sftpServer, PublicKeysPath, LocalDirPath, RemoteFilePath string, sftpPort int) error {
 	var (
 		err        error
 		sftpClient *sftp.Client
@@ -126,7 +126,8 @@ func SftpDownload(isPasswd bool, username, passwd, sftpServer, PublicKeysPath, L
 	// 这里换成实际的 SSH 连接的 用户名，密码，主机名或IP，SSH端口
 	sftpClient, err = connect(username, passwd, PublicKeysPath, sftpServer, sftpPort)
 	if err != nil {
-		log.Fatal(err)
+		logrus.Error(err)
+		return err
 	}
 	defer func(sftpClient *sftp.Client) {
 		err := sftpClient.Close()
@@ -138,7 +139,8 @@ func SftpDownload(isPasswd bool, username, passwd, sftpServer, PublicKeysPath, L
 
 	srcFile, err := sftpClient.Open(RemoteFilePath)
 	if err != nil {
-		log.Fatal(err)
+		logrus.Error(err)
+		return err
 	}
 	defer func(srcFile *sftp.File) {
 		err := srcFile.Close()
@@ -151,7 +153,8 @@ func SftpDownload(isPasswd bool, username, passwd, sftpServer, PublicKeysPath, L
 	var localFileName = path.Base(RemoteFilePath)
 	dstFile, err := os.Create(path.Join(LocalDirPath, localFileName))
 	if err != nil {
-		log.Fatal(err)
+		logrus.Error(err)
+		return err
 	}
 	defer func(dstFile *os.File) {
 		err := dstFile.Close()
@@ -163,6 +166,8 @@ func SftpDownload(isPasswd bool, username, passwd, sftpServer, PublicKeysPath, L
 
 	if _, err = srcFile.WriteTo(dstFile); err != nil {
 		log.Fatal(err)
+		return err
 	}
 	logrus.Infof("下载成功 ✅ ｜文件位置 -> %s", LocalDirPath+path.Base(RemoteFilePath))
+	return nil
 }
